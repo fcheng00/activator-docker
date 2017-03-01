@@ -2,7 +2,7 @@ Typesafe Activator For Docker
 ================
 Activator is the Typesafe Reactive Platform's build and tutorial tool. It allows you to easily get started with Play Framework, Akka and Scala.
 
-This build is configured to use version 1.3.7 of Activator.
+This build is configured to use version 1.3.12 of Activator.
 
 For more information, visit [typesafe.com](http://typesafe.com/get-started).
 
@@ -10,11 +10,11 @@ How to run
 ----------
 First of all, pull the image using 
 
-    [sudo] docker pull jeroenminnaert/activator
+    [sudo] docker pull fcheng00/activator-docker
 
 Once you have downloaded the image, you can start a new activator container as follows:
 
-    [sudo] docker run -it --name my_container_name -v /my/activator/app/directory:/home/app -p 9000:9000 jeroenminnaert/activator run
+    [sudo] docker run -it --name my_container_name -v /my/activator/app/directory:/home/app -p 9000:9000 fcheng00/activator-docker run
 
 This will create a container called 'my_container_name' that runs the code from /my/activator/app/directory. You will be able to access the application using port 9000 on your host machine.
 
@@ -28,7 +28,7 @@ Activator provides a web interface where you can find a great set of tutorials t
 
 In order to access this interface, simply create a container using the following command:
 
-    [sudo] docker run -it -p 8888:8888 jeroenminnaert/activator
+    [sudo] docker run -it -p 8888:8888 fcheng00/activator-docker
     
 This will automatically start up the web interface on port 8888 of your host machine. Notice that you don't need to specify the '/home/app' mapping.
 
@@ -42,7 +42,7 @@ When running this image, you will notice that it takes a long time to start up b
      
 You can then add this data container when running the Activator image:
 
-    [sudo] docker run -it --name my_container_name -v /my/activator/app/directory:/home/app --volumes-from activator_cache -p 9000:9000 jeroenminnaert/activator run
+    [sudo] docker run -it --name my_container_name -v /my/activator/app/directory:/home/app --volumes-from activator_cache -p 9000:9000 fcheng00/activator-docker run
     
 Notice that by adding '--volumes-from activator_cache', the two cache folders will not be destroyed when the container is stopped, and therefore, startup times will go substantially faster.
 
@@ -65,6 +65,6 @@ Note that this issue occurs because JNotify does not support network file system
 
 Dependencies
 ------------
-This Dockerfile depends on [the official Docker Java repo](https://registry.hub.docker.com/u/library/java/). Version 8 was used for this build.
+This Dockerfile depends on [the official Docker Java repo](https://hub.docker.com/_/ibmjava/). Version 8 was used for this build.
 
 
