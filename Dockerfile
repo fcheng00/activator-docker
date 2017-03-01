@@ -1,4 +1,4 @@
-FROM ibmjava:8-jdk
+FROM ibmjava:8-sdk
 
 MAINTAINER Jeroen Minnaert <jeroenminnaert@gmail.com>
 
@@ -6,6 +6,8 @@ ENV ACTIVATOR_VERSION 1.3.12
 
 # Download and install Activator
 RUN wget --output-document /opt/typesafe-activator-$ACTIVATOR_VERSION.zip http://downloads.typesafe.com/typesafe-activator/$ACTIVATOR_VERSION/typesafe-activator-$ACTIVATOR_VERSION.zip
+RUN apt-get update
+RUN apt-get install -y unzip
 RUN unzip /opt/typesafe-activator-$ACTIVATOR_VERSION.zip -d /opt
 RUN rm -f /opt/typesafe-activator-$ACTIVATOR_VERSION.zip
 RUN mv /opt/activator-dist-$ACTIVATOR_VERSION /opt/activator
